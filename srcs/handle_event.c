@@ -14,6 +14,7 @@
 
 int	key_pressed(int key, t_game *game)
 {
+	printf("%d\n", key);
 	if (key == W || key == A || key == S || key == D || key == 65307)
 		game->current_move = key;
 	return (1);
@@ -26,51 +27,58 @@ int	key_release(int key, t_game *game)
 	return (1);
 }
 
-int		collision(t_game *g)
+int		collision(int key, t_game *g)
 {
 	int tmp_y;
 	int tmp_x;
 
 	tmp_y = g->player->posY;
 	tmp_x = g->player->posX;
-	if (g->current_move == W)
+	if (key == W)
 		tmp_y -= 1;
-	if (g->current_move == S)
+	if (key == S)
 		tmp_y += 1;
-	if (g->current_move == A)
+	if (key == A)
 		tmp_x -= 1;
-	if (g->current_move == D)
+	if (key == D)
 		tmp_x += 1;
 	return (g->map->l_map[(int)tmp_y][(int)tmp_x] == 1);
 }
 
-void	move(t_game *g)
+void	move(int key, t_game *g)
 {
-	if (g->current_move == W && !collision(g))
+	if (key == W && !collision(key, g))
 		g->player->posY -= 1;
-	if (g->current_move == S && !collision(g))
+	if (key == S && !collision(key, g))
 		g->player->posY += 1;
-	if (g->current_move == A && !collision(g))
+	if (key == A && !collision(key, g))
 		g->player->posX -= 1;
-	if (g->current_move == D && !collision(g))
+	if (key == D && !collision(key, g))
 		g->player->posX += 1;
-	if (g->map->l_map[g->player->posY][g->player->posX] == 2)
+	if (g->map->l_map[(int)g->player->posY][(int)g->player->posX] == 2)
 	{
-		g->map->l_map[g->player->posY][g->player->posX] = 0;
+		g->map->l_map[(int)g->player->posY][(int)g->player->posX] = 0;
 		g->collect--;
 	}
-	if (g->map->l_map[g->player->posY][g->player->posX] == 3
+	if (g->map->l_map[(int)g->player->posY][(int)g->player->posX] == 3
 		&& g->collect == 0)
 	{
 		printf("Game Over");
 		exit_game(g);
 	}
+	printf("current move = %d\n", g->current_move);
 }
 
 int	main_loop(t_game *g)
 {
-	move(g);
+	if (g->current_move == W || g->current_move == A || g->current_move == S
+		|| g->current_move == D)
+		move(g->current_move, g);
+	if (g->current_move == 65307)
+		clear_game(g);
+	//move(g->current_move, g);
+	//mlx_clear_window(g->win->mlx_ptr, g->win->win_ptr);
 	mini_map(g);
-	mlx_clear_window(g->win->mlx_ptr, g->win->win_ptr);
+	mlx_put_image_to_window(g->win->mlx_ptr, g->win->win_ptr, g->data->img, 0, 0);
 	return (0);
 }

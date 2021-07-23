@@ -14,6 +14,6 @@
 
 void	position(t_player *player, int posX, int posY)
 {
-	player->posX += posX;
-	player->posY += posY;
+	player->posX += posX + 0.5; 
+	player->posY += posY + 0.5;
 }

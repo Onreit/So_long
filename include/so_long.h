@@ -62,8 +62,8 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int	posX;
-	int	posY;
+	double	posX;
+	double	posY;
 	char	dir;
 }				t_player;
 
@@ -100,5 +100,7 @@ void	clear_image(t_game *g);
 void	position(t_player *player, int posX, int posY);
 int	key_pressed(int key, t_game *game);
 int	key_release(int key, t_game *game);
+void	get_disp(t_game *game);
+void	draw_player(t_game *game);
 
 #endif

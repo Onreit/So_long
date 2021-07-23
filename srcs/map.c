@@ -114,7 +114,7 @@ void		read_map(char *map_path, t_game *game)
 		get_map(line, game);
 		free(line);
 		parse_info(game);
-		//get_disp(game);
+		get_disp(game);
 		check_info(game);
 		check_map(game, game->map, game->player);
 	}

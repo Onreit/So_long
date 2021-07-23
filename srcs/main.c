@@ -36,7 +36,7 @@ void	game_loop(t_game *g)
 	mlx_hook(g->win->win_ptr, 2, (1L << 0), key_pressed, g);
 	mlx_hook(g->win->win_ptr, 3, (1L << 1), key_release, g);
 	mlx_hook(g->win->win_ptr, 33, (1L << 17), exit_game, g);
-	mlx_loop_hook(g->win->mlx_ptr, main_loop, g);
+	mlx_loop_hook(g->win->mlx_ptr, &main_loop, g);
 	mlx_loop(g->win->mlx_ptr);
 }
 
@@ -69,6 +69,7 @@ int	main(int ac, char **av)
 	read_map(av[1], g);
 	print_map(g->map->l_map, g->map->nb_row, g->map->nb_col);
 	game_init(g);
+	mini_map(g);
 	game_loop(g);
 	return (0);
 }

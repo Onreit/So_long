@@ -19,7 +19,7 @@ int	dir(char c)
 	return (0);
 }
 
-void	goal(char line, t_game *g, int current_line, int *row, int i)
+void	goal(char line, t_game *g, int *row, int i, int current_line)
 {
 	if (line == 'P')
 	{	
@@ -49,8 +49,8 @@ void	handle_line2(char *line, t_game *g, int current_line, int *row)
 		{
 			if (!ft_isdigit(line[i]))
 			{
-				goal(line[i], g, current_line, row, i);
-				row[i] = 0;
+				goal(line[i], g, row, i, current_line);
+				//row[i] = 0;
 			}
 			else
 			{

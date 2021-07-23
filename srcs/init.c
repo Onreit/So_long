@@ -33,8 +33,8 @@ t_player	*init_player(void)
 	nplay = (t_player *)malloc(sizeof(t_player));
 	if (!nplay)
 		return (NULL);
-	nplay->posX = 0;
-	nplay->posY = 0;
+	nplay->posX = 0.;
+	nplay->posY = 0.;
 	nplay->dir = '0';
 	return (nplay);
 }
@@ -78,6 +78,8 @@ void	init_game(t_game *gamer)
 	gamer->data = init_data();
 	if (!gamer->map || !gamer->player || !gamer->win || !gamer->data)
 		exit_failure("Malloc error\n", gamer);
+	gamer->win->height = 720;
+	gamer->win->width = 1020;
 	gamer->current_move = INT_MIN;
 	gamer->collect = 0;
 	gamer->check_exit = 0;
