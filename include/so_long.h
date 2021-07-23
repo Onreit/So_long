@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 23:22:45 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/21 00:00:10 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/23 06:31:30 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,44 @@ typedef struct	s_data
 	int		height;
 }				t_data;
 
+typedef struct s_map
+{
+	int		nb_row;
+	int		nb_col;
+	int		**l_map;
+	char	*tmp_map;
+	char	*tmp_file;
+}				t_map;
+
 typedef struct s_game
 {
 	t_map		*map;
 	t_win		*win;
-	t_color		*color;
 	t_data		*data;
 	double		pos_x;
 	double		pos_y;
 	int			collect;
+	int			check_exit;
 	int			current_move;
 }				t_game;
 
+void	mini_map(t_game *game);
+void	exit_failure(char *error, t_game *g);
+void	clear_game(t_game *g);
+int	exit_game(t_game *g);
+int	main_loop(t_game *g);
+void	init_game(t_game *gamer);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	read_map(char *map_path, t_game *game);
+int	*handle_line(char *line, t_game *game, int current_line);
+void	ft_strjoin_fr(char **str, char *buf);
+void	check_map(t_game *g, t_map *map, t_player *player);
+void	free_split(char **str);
+int	ft_isrow(char *row);
+int	ft_isempty(char *line);
+void	check_info(t_game *g);
+void	print_map(int **map, int nb_row, int nb_col);
+void	clear_image(t_game *g);
+void	position(t_player *player, float posX, float posY);
 
 #endif
