@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-void	position(t_player *player, float posX, float posY)
+void	position(t_player *player, int posX, int posY)
 {
 	player->posX += posX;
 	player->posY += posY;

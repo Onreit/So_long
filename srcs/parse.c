@@ -51,10 +51,10 @@ void	reset_map(t_map *map)
 		{
 			if (map->l_map[y][x] == 9)
 				map->l_map[y][x] = 0;
-			if (map.l_map[pos_y][pos_x] == 8)
-				map.l_map[pos_y][pos_x] = 2;
-			if (map.l_map[pos_y][pos_x] == 7)
-				map.l_map[pos_y][pos_x] = 3;
+			if (map->l_map[y][x] == 8)
+				map->l_map[y][x] = 2;
+			if (map->l_map[y][x] == 7)
+				map->l_map[y][x] = 3;
 			x++;
 		}
 		y++;
@@ -82,10 +82,10 @@ void	flood_fill(t_game *g, t_map map, int pos_x, int pos_y)
 		map.l_map[pos_y][pos_x] = 8;
 	if (map.l_map[pos_y][pos_x] == 3)
 		map.l_map[pos_y][pos_x] = 7;
-	flood_fill(game, map, pos_x + 1, pos_y);
-	flood_fill(game, map, pos_x - 1, pos_y);
-	flood_fill(game, map, pos_x, pos_y + 1);
-	flood_fill(game, map, pos_x, pos_y - 1);
+	flood_fill(g, map, pos_x + 1, pos_y);
+	flood_fill(g, map, pos_x - 1, pos_y);
+	flood_fill(g, map, pos_x, pos_y + 1);
+	flood_fill(g, map, pos_x, pos_y - 1);
 }
 
 void	check_map(t_game *g, t_map *map, t_player *player)
@@ -93,7 +93,7 @@ void	check_map(t_game *g, t_map *map, t_player *player)
 	if (map->nb_row < 3 || map->nb_col < 3)
 		exit_failure("The map is too small;\n", g);
 	if (player->posY >= (int)map->nb_row || player->posY < 0)
-		exit_failure("The coordinates are wrong;\n". g);
+		exit_failure("The coordinates are wrong;\n", g);
 	if (player->posX >= (int)map->nb_col || player->posX < 0)
 		exit_failure("The coordinates are wrong;\n", g);
 	flood_fill(g, *(map), (int)player->posX, (int)player->posY);

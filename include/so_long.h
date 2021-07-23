@@ -37,7 +37,7 @@ typedef struct s_win
 	int		height;
 	void	*mlx_ptr;
 	void	*win_ptr;
-}				t_win
+}				t_win;
 
 typedef struct	s_data
 {
@@ -60,16 +60,24 @@ typedef struct s_map
 	char	*tmp_file;
 }				t_map;
 
+typedef struct s_player
+{
+	int	posX;
+	int	posY;
+	char	dir;
+}				t_player;
+
 typedef struct s_game
 {
 	t_map		*map;
 	t_win		*win;
 	t_data		*data;
-	double		pos_x;
-	double		pos_y;
+	t_player	*player;
 	int			collect;
 	int			check_exit;
 	int			current_move;
+	int			map_started;
+	int			map_stopped;
 }				t_game;
 
 void	mini_map(t_game *game);
@@ -89,6 +97,8 @@ int	ft_isempty(char *line);
 void	check_info(t_game *g);
 void	print_map(int **map, int nb_row, int nb_col);
 void	clear_image(t_game *g);
-void	position(t_player *player, float posX, float posY);
+void	position(t_player *player, int posX, int posY);
+int	key_pressed(int key, t_game *game);
+int	key_release(int key, t_game *game);
 
 #endif

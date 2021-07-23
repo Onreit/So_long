@@ -14,9 +14,6 @@
 
 static int	check(char c, char charset)
 {
-	int	i;
-
-	i = 0;
 	if (c == charset)
 		return (-1);
 	return (1);
@@ -73,7 +70,7 @@ static char	**sp(char **strs, const char *str, int *i, char c)
 			strs[i[0]] = malloc(sizeof(char) * (i[1] + 1));
 			if (!strs[i[0]])
 			{
-				while (--i >= 0)
+				while (--i[0] >= 0)
 					free(strs[i[0]]);
 				free(strs);
 				return (NULL);

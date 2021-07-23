@@ -25,7 +25,6 @@ void	game_init(t_game *g)
 	g->win->mlx_ptr = mlx_init();
 	g->win->win_ptr = mlx_new_window(g->win->mlx_ptr, g->win->width,
 			g->win->height, "so_long");
-	get_texture(g);
 	g->data->img = mlx_new_image(g->win->mlx_ptr,
 			g->win->width, g->win->height);
 	g->data->addr = mlx_get_data_addr(g->data->img, &g->data->bits_per_pixel,
@@ -41,7 +40,7 @@ void	game_loop(t_game *g)
 	mlx_loop(g->win->mlx_ptr);
 }
 
-void	check_ext(char *file, char *ext, )
+void	check_ext(char *file, char *ext, t_game *g)
 {
 	size_t	len_file;
 	size_t	len_ext;
@@ -53,7 +52,7 @@ void	check_ext(char *file, char *ext, )
 		if (len_ext == 0)
 			return ;
 	}
-	exit_failure("Wrong extension");
+	exit_failure("Wrong extension", g);
 }
 
 int	main(int ac, char **av)
@@ -63,10 +62,10 @@ int	main(int ac, char **av)
 	g = (t_game *)malloc(sizeof(t_game));
 	if (!g)
 		return (0);
-	check_ext(av[1], ".ber");
+	check_ext(av[1], ".ber", g);
 	init_game(g);
 	if (ac != 2)
-		exit_failure("You must to have two arguments");
+		exit_failure("You must to have two arguments", g);
 	read_map(av[1], g);
 	print_map(g->map->l_map, g->map->nb_row, g->map->nb_col);
 	game_init(g);

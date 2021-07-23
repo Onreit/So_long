@@ -43,9 +43,11 @@ SRC =	srcs/parse_map.c \
 		srcs/map.c \
 		srcs/display.c \
 		srcs/error.c \
-		srcs/position.c \
 		srcs/init.c \
 		srcs/handle_event.c \
+		srcs/position.c \
+		srcs/utils.c \
+		srcs/draw.c \
 		srcs/main.c \
 		${LIBFTSRC}
 

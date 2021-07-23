@@ -35,6 +35,7 @@ void	goal(char line, t_game *g, int current_line, int *row, int i)
 	{
 		g->check_exit += 1;
 		row[i] = 3;
+	}
 }
 
 void	handle_line2(char *line, t_game *g, int current_line, int *row)

@@ -61,7 +61,7 @@ void	mini_map_bis(t_game *g, int x, int y)
 	int	count_x;
 	int	count_y;
 
-	count_y = (g->win->height / game->map->nb_row) * y;
+	count_y = (g->win->height / g->map->nb_row) * y;
 	while (count_y < ((g->win->height / g->map->nb_row) * (y + 1)))
 	{
 		count_x = (g->win->width / g->map->nb_col) * x;

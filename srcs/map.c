@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/so_long.h"
 
-void	parse_info(char *s, t_game *game)
+void	parse_info(t_game *game)
 {
-	char	*to_free;
 	int		i;
 
 	i = 0;
@@ -22,14 +21,14 @@ void	parse_info(char *s, t_game *game)
 	{
 		if (game->map->tmp_map[i] != 'C' && game->map->tmp_map[i] != '1'
 			&& game->map->tmp_map[i] != '0' && game->map->tmp_map[i] != '\n'
-			&& game->map->tmp_map[i] != 'P' && game->map->tmp_map[i] != 'E'))
-			exit_failure("Invalid map\n");
+			&& game->map->tmp_map[i] != 'P' && game->map->tmp_map[i] != 'E')
+			exit_failure("Invalid map\n", game);
 		i++;
 	}
 }
 
 
-void	parse_file(char *s, t_game *game)
+/*void	parse_file(char *s, t_game *game)
 {
 	int		fd;
 	int		ld;
@@ -51,24 +50,21 @@ void	parse_file(char *s, t_game *game)
 	parse_file_bis(game, tmp);
 	close(fd);
 }
-
+*/
 
 void	parse_map(char *line, t_game *game)
 {
 	int	i;
 
-	ft_strjoin_free(&(game->map->tmp_map), line);
-	ft_strjoin_free(&(game->map->tmp_map), "\n");
+	ft_strjoin_fr(&(game->map->tmp_map), line);
+	ft_strjoin_fr(&(game->map->tmp_map), "\n");
 	i = -1;
 	while (line[++i])
 	{
-		if (dir(line[i]))
+		if (line[i] == 'P')
 		{
 			if (game->player->dir == '0')
-			{
 				game->player->dir = line[i];
-				init_player(game->player);
-			}
 			else
 				exit_failure("The map already has a position;\n", game);
 		}
@@ -117,9 +113,9 @@ void		read_map(char *map_path, t_game *game)
 		}
 		get_map(line, game);
 		free(line);
-		parse_info(game->map->tmp_map, game);
-		get_disp(game);
+		parse_info(game);
+		//get_disp(game);
 		check_info(game);
-		check_map(game, game->layout, game->player);
+		check_map(game, game->map, game->player);
 	}
 }

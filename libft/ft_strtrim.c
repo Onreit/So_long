@@ -32,7 +32,7 @@ static size_t	kcehc(char const *set, char const *s)
 
 	i = ft_strlen(s);
 	i--;
-	while (check(s[i], set) == 0 && i >= 0)
+	while (check(s[i], set) == 0 && i > 0)
 		i--;
 	return (i + 1);
 }

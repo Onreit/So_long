@@ -80,7 +80,7 @@ int	check(char **s, char **line, int fd, int ret)
 
 int	get_next_line(int fd, char **line)
 {
-	static char	*s[OPEN_MAX];
+	static char	*s[256];
 	char		buf[BUFFER_SIZE + 1];
 	char		*tmp;
 	int			ret;

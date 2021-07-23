@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/so_long.h"
 
 void	print_map(int **map, int nb_row, int nb_col)
 {

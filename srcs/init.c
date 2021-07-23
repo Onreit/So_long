@@ -18,7 +18,7 @@ t_map	*init_map(void)
 
 	nmap = (t_map *)malloc(sizeof(t_map));
 	if (!nmap)
-		exit_failure("Malloc error\n");
+		return (NULL);
 	nmap->tmp_map = NULL;
 	nmap->nb_row = 0;
 	nmap->nb_col = 0;
@@ -32,10 +32,10 @@ t_player	*init_player(void)
 
 	nplay = (t_player *)malloc(sizeof(t_player));
 	if (!nplay)
-		exit_failure("Malloc error\n");
-	nplay->posX = 0.;
-	nplay->posY = 0.;
-	nplay->dirX = 0.;
+		return (NULL);
+	nplay->posX = 0;
+	nplay->posY = 0;
+	nplay->dir = '0';
 	return (nplay);
 }
 
@@ -45,7 +45,7 @@ t_win	*init_win(void)
 
 	win = (t_win *)malloc(sizeof(t_win));
 	if (!win)
-		exit_failure("Malloc error\n");
+		return (NULL);
 	win->width = 1020;
 	win->height = 720;
 	win->mlx_ptr = NULL;
@@ -59,7 +59,7 @@ t_data	*init_data(void)
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
-		exit_failure("Malloc error;\n");
+		return (NULL);
 	data->img = NULL;
 	data->addr = NULL;
 	data->bits_per_pixel = 0;
@@ -77,8 +77,10 @@ void	init_game(t_game *gamer)
 	gamer->win = init_win();
 	gamer->data = init_data();
 	if (!gamer->map || !gamer->player || !gamer->win || !gamer->data)
-		exit_failure("Malloc error\n");
+		exit_failure("Malloc error\n", gamer);
 	gamer->current_move = INT_MIN;
 	gamer->collect = 0;
 	gamer->check_exit = 0;
+	gamer->map_started = 0;
+	gamer->map_stopped = 0;
 }
