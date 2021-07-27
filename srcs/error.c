@@ -38,8 +38,6 @@ void	clear_game(t_game *g)
 			free(g->map->l_map[i++]);
 		free(g->map->l_map);
 	}
-	if (g->map->tmp_file)
-		free(g->map->tmp_file);
 	free(g->map);
 	clear_image(g);
 	if (g->win->win_ptr)

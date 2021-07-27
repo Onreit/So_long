@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 12:54:33 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/23 04:59:37 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 05:23:52 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_player	*init_player(void)
 	nplay = (t_player *)malloc(sizeof(t_player));
 	if (!nplay)
 		return (NULL);
-	nplay->posX = 0.;
-	nplay->posY = 0.;
+	nplay->posX = 0;
+	nplay->posY = 0;
 	nplay->dir = '0';
 	return (nplay);
 }
@@ -62,6 +62,7 @@ t_data	*init_data(void)
 		return (NULL);
 	data->img = NULL;
 	data->addr = NULL;
+	data->path = NULL;
 	data->bits_per_pixel = 0;
 	data->line_length = 0;
 	data->endian = 0;
@@ -76,13 +77,21 @@ void	init_game(t_game *gamer)
 	gamer->player = init_player();
 	gamer->win = init_win();
 	gamer->data = init_data();
+	gamer->floor = init_data();
+	gamer->exit = init_data();
+	gamer->col = init_data();
+	gamer->text_player = init_data();
+	gamer->wall = init_data();
 	if (!gamer->map || !gamer->player || !gamer->win || !gamer->data)
 		exit_failure("Malloc error\n", gamer);
-	gamer->win->height = 720;
-	gamer->win->width = 1020;
+	gamer->win->height = 0;
+	gamer->win->width = 0;
 	gamer->current_move = INT_MIN;
 	gamer->collect = 0;
 	gamer->check_exit = 0;
 	gamer->map_started = 0;
 	gamer->map_stopped = 0;
+	gamer->x = 0;
+	gamer->y = 0;
+	gamer->size = 50;
 }

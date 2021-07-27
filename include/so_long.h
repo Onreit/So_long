@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 23:22:45 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/23 06:31:30 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 03:54:32 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,12 @@ typedef struct s_map
 	int		nb_col;
 	int		**l_map;
 	char	*tmp_map;
-	char	*tmp_file;
 }				t_map;
 
 typedef struct s_player
 {
-	double	posX;
-	double	posY;
+	int	posX;
+	int	posY;
 	char	dir;
 }				t_player;
 
@@ -72,7 +71,15 @@ typedef struct s_game
 	t_map		*map;
 	t_win		*win;
 	t_data		*data;
+	t_data		*col;
+	t_data		*floor;
+	t_data		*exit;
+	t_data		*text_player;
+	t_data		*wall;
 	t_player	*player;
+	int			x;
+	int			y;
+	int			size;
 	int			collect;
 	int			check_exit;
 	int			current_move;
@@ -102,5 +109,9 @@ int	key_pressed(int key, t_game *game);
 int	key_release(int key, t_game *game);
 void	get_disp(t_game *game);
 void	draw_player(t_game *game);
+void	check_texture(t_game *g);
+void	get_texture(t_game *g);
+void	put_text(t_game *g, t_data *t);
+void    draw_texture(t_game *g, t_data *t);
 
 #endif

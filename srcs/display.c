@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 12:09:21 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/23 06:30:14 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 05:13:21 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,9 @@ void	free_image(t_game *g, t_data *t)
 
 void	clear_image(t_game *g)
 {
+	free_image(g, g->exit);
+	free_image(g, g->wall);
+	free_image(g, g->text_player);
+	free_image(g, g->col);
 	free_image(g, g->data);
 }

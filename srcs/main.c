@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 17:40:52 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/23 05:36:00 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 04:43:53 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	game_init(t_game *g)
 	g->win->mlx_ptr = mlx_init();
 	g->win->win_ptr = mlx_new_window(g->win->mlx_ptr, g->win->width,
 			g->win->height, "so_long");
+	get_texture(g);
 	g->data->img = mlx_new_image(g->win->mlx_ptr,
 			g->win->width, g->win->height);
 	g->data->addr = mlx_get_data_addr(g->data->img, &g->data->bits_per_pixel,
@@ -66,10 +67,10 @@ int	main(int ac, char **av)
 	init_game(g);
 	if (ac != 2)
 		exit_failure("You must to have two arguments", g);
+	check_texture(g);
 	read_map(av[1], g);
 	print_map(g->map->l_map, g->map->nb_row, g->map->nb_col);
 	game_init(g);
-	mini_map(g);
 	game_loop(g);
 	return (0);
 }

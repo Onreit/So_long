@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 12:24:06 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/23 05:28:46 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 01:55:06 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,7 @@ void		read_map(char *map_path, t_game *game)
 		get_disp(game);
 		check_info(game);
 		check_map(game, game->map, game->player);
+		game->win->width = game->map->nb_col * game->size;
+		game->win->height = game->map->nb_row * game->size;
 	}
 }

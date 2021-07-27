@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 10:11:51 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/23 05:27:41 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 03:49:30 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	move(int key, t_game *g)
 {
 	if (key == W && !collision(key, g))
 		g->player->posY -= 1;
-	if (key == S && !collision(key, g))
+	else if (key == S && !collision(key, g))
 		g->player->posY += 1;
-	if (key == A && !collision(key, g))
+	else if (key == A && !collision(key, g))
 		g->player->posX -= 1;
-	if (key == D && !collision(key, g))
+	else if (key == D && !collision(key, g))
 		g->player->posX += 1;
 	if (g->map->l_map[(int)g->player->posY][(int)g->player->posX] == 2)
 	{
@@ -77,7 +77,8 @@ int	main_loop(t_game *g)
 	if (g->current_move == 65307)
 		clear_game(g);
 	//move(g->current_move, g);
-	//mlx_clear_window(g->win->mlx_ptr, g->win->win_ptr);
+	mlx_clear_window(g->win->mlx_ptr, g->win->win_ptr);
+	//draw_texture(g);
 	mini_map(g);
 	mlx_put_image_to_window(g->win->mlx_ptr, g->win->win_ptr, g->data->img, 0, 0);
 	return (0);
