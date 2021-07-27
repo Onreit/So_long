@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 23:37:32 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/23 06:22:31 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 21:05:10 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,49 +19,44 @@ int	dir(char c)
 	return (0);
 }
 
-void	goal(char line, t_game *g, int *row, int i, int current_line)
+void	goal(char line, t_game *g, int *row, int current_line)
 {
 	if (line == 'P')
 	{	
-		position(g->player, i, current_line);
-		row[i] = 0;
+		position(g->player, g->x, current_line);
+		row[g->x] = 0;
 	}
 	else if (line == 'C')
 	{
 		g->collect += 1;
-		row[i] = 2;
+		row[g->x] = 2;
 	}
 	else if (line == 'E')
 	{
 		g->check_exit += 1;
-		row[i] = 3;
+		row[g->x] = 3;
 	}
 }
 
 void	handle_line2(char *line, t_game *g, int current_line, int *row)
 {
-	int	i;
-
-	i = 0;
-	while (i < g->map->nb_col)
+	g->x = 0;
+	while (g->x < g->map->nb_col)
 	{
-		while (line[i])
+		while (line[g->x])
 		{
-			if (!ft_isdigit(line[i]))
-			{
-				goal(line[i], g, row, i, current_line);
-				//row[i] = 0;
-			}
+			if (!ft_isdigit(line[g->x]))
+				goal(line[g->x], g, row, current_line);
 			else
 			{
-				row[i] = 0;
-				if (ft_isdigit(line[i]))
-					row[i] = line[i] - '0';
+				row[g->x] = 0;
+				if (ft_isdigit(line[g->x]))
+					row[g->x] = line[g->x] - '0';
 			}
-			i++;
+			g->x++;
 		}
 		while (i < g->map->nb_col)
-			row[i++] = 0;
+			row[g->x++] = 0;
 	}
 }
 

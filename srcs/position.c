@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:34:37 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 03:57:19 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 20:50:25 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	position(t_player *player, int posX, int posY)
 {
-	player->posX += posX; 
+	player->posX += posX;
 	player->posY += posY;
 }

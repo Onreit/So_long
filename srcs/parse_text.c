@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 22:31:28 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 03:39:18 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 20:37:49 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	get_texture(t_game *g)
 	set_texture(g, g->floor);
 	set_texture(g, g->text_player);
 	set_texture(g, g->exit);
-    set_texture(g, g->wall);
+	set_texture(g, g->wall);
 }

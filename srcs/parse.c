@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 23:19:11 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/23 06:21:53 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 20:32:02 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	flood_fill(t_game *g, t_map map, int pos_x, int pos_y)
 		exit_failure("The map is not close;\n", g);
 	else if (map.l_map[pos_y][pos_x] != 1 && map.l_map[pos_y][pos_x] != 9
 		&& map.l_map[pos_y][pos_x] != 0 && map.l_map[pos_y][pos_x] != 2
-		&& map.l_map[pos_y][pos_x] != 3  && map.l_map[pos_y][pos_x] != 8
+		&& map.l_map[pos_y][pos_x] != 3 && map.l_map[pos_y][pos_x] != 8
 		&& map.l_map[pos_y][pos_x] != 7)
 		exit_failure("The map is invalid;\n", g);
 	else if (map.l_map[pos_y][pos_x] == 1 || map.l_map[pos_y][pos_x] == 9

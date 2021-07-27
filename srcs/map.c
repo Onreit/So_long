@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 12:24:06 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 01:55:06 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 21:00:30 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,6 @@ void	parse_info(t_game *game)
 		i++;
 	}
 }
-
-
-/*void	parse_file(char *s, t_game *game)
-{
-	int		fd;
-	int		ld;
-	char	*line;
-	char	**tmp;
-
-	tmp = NULL;
-	ld = open(s, O_DIRECTORY);
-	if (ld >= 0)
-		exit_failure("The file doesn't exist;\n");
-	fd = open(s, O_RDONLY);
-	if (fd < 0)
-		exit_failure("The file doesn't exist;\n");
-	game->map->tmp_file = ft_strdup("");
-	while (get_next_line(fd, &line) > 0)
-		parse_to_free(game, line);
-	tmp = ft_split(game->map->tmp_file, '\n');
-	free(line);
-	parse_file_bis(game, tmp);
-	close(fd);
-}
-*/
 
 void	parse_map(char *line, t_game *game)
 {
@@ -97,12 +72,13 @@ static void	get_map(char *line, t_game *game)
 	}
 }
 
-void		read_map(char *map_path, t_game *game)
+void	read_map(char *map_path, t_game *game)
 {
-	int			fd;
-	char		*line;
+	int		fd;
+	char	*line;
 
-	if ((fd = open(map_path, O_RDONLY)) < 0)
+	fd = open(map_path, O_RDONLY);
+	if (fd < 0)
 		exit_failure("The file doesn't exist;\n", game);
 	else
 	{
