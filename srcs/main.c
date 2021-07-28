@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 17:40:52 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 23:05:56 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 04:57:57 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	game_loop(t_game *g)
 	mlx_loop(g->win->mlx_ptr);
 }
 
-void	check_ext(char *file, char *ext, t_game *g)
+void	check_ext(char *file, char *ext)
 {
 	size_t	len_file;
 	size_t	len_ext;
@@ -53,22 +53,25 @@ void	check_ext(char *file, char *ext, t_game *g)
 		if (len_ext == 0)
 			return ;
 	}
-	exit_failure("Wrong extension", g);
+	printf("Error\nWrong extension\n");
+	exit(EXIT_FAILURE);
 }
 
 int	main(int ac, char **av)
 {
 	t_game	*g;
 
+	if (ac != 2)
+	{
+		printf("Error\nYou must to have two arguments\n");
+		exit(EXIT_FAILURE);
+	}
+	check_ext(av[1], ".ber");
 	g = (t_game *)malloc(sizeof(t_game));
 	if (!g)
 		return (0);
-	check_ext(av[1], ".ber", g);
 	init_game(g);
-	if (ac != 2)
-		exit_failure("You must to have two arguments", g);
 	read_map(av[1], g);
-	print_map(g->map->l_map, g->map->nb_row, g->map->nb_col);
 	game_init(g);
 	game_loop(g);
 	return (0);

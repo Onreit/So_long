@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 12:54:33 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 02:44:16 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 04:56:47 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ void	init_game(t_game *gamer)
 	gamer->y = 0;
 	gamer->size = 50;
 	gamer->check_player = 0;
+	gamer->movements = 0;
 }

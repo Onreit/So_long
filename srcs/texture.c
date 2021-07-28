@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 22:08:57 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 20:59:09 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 05:28:47 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	draw_texture(t_game *g, t_data *texture)
 						px % g->size, g->size),
 					get_pos_in_text(texture->height,
 						py % g->size, g->size));
-			if (color != 0x0)
+			if (color != 0x000000)
 				my_mlx_pixel_put(g->data, px, py, color);
 			py++;
 		}

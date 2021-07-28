@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 00:58:54 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 02:48:32 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 05:13:38 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,16 @@ void	is_rect(t_game *g)
 		i++;
 	}
 	free_split(split_map);
+}
+
+void	is_end(t_game *g)
+{
+	if (g->map->l_map[(int)g->player->posY][(int)g->player->posX] == 2)
+	{
+		g->map->l_map[(int)g->player->posY][(int)g->player->posX] = 0;
+		g->collect--;
+	}
+	if (g->map->l_map[(int)g->player->posY][(int)g->player->posX] == 3
+		&& g->collect == 0)
+		exit_game(g);
 }

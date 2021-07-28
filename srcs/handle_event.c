@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 10:11:51 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 02:45:10 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 05:19:19 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 int	key_pressed(int key, t_game *game)
 {
 	if (key == W || key == A || key == S || key == D || key == 65307)
-	{	
 		game->current_move = key;
-		if (key != 65307)
-			printf("current move = %d\n", key);
-	}
 	return (1);
 }
 
@@ -54,24 +50,26 @@ int	collision(int key, t_game *g)
 void	move(int key, t_game *g)
 {
 	if (key == W && !collision(key, g))
+	{
+		is_move(g);
 		g->player->posY -= 1;
+	}
 	else if (key == S && !collision(key, g))
+	{
+		is_move(g);
 		g->player->posY += 1;
+	}
 	else if (key == A && !collision(key, g))
+	{
+		is_move(g);
 		g->player->posX -= 1;
+	}
 	else if (key == D && !collision(key, g))
+	{
+		is_move(g);
 		g->player->posX += 1;
-	if (g->map->l_map[(int)g->player->posY][(int)g->player->posX] == 2)
-	{
-		g->map->l_map[(int)g->player->posY][(int)g->player->posX] = 0;
-		g->collect--;
 	}
-	if (g->map->l_map[(int)g->player->posY][(int)g->player->posX] == 3
-		&& g->collect == 0)
-	{
-		printf("Game Over");
-		exit_game(g);
-	}
+	is_end(g);
 }
 
 int	main_loop(t_game *g)

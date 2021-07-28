@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 03:43:49 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 02:19:27 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 05:16:43 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,10 @@ void	check_info(t_game *g)
 {
 	if (g->collect == 0 || g->check_exit == 0 || g->check_player == 0)
 		exit_failure("Too few info\n", g);
+}
+
+void	is_move(t_game *g)
+{
+	g->movements++;
+	printf("Number of movements = %d\n", g->movements);
 }

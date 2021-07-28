@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 23:22:45 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 02:52:29 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 05:17:34 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_game
 	int			check_exit;
 	int			check_player;
 	int			current_move;
+	int			movements;
 	int			map_started;
 	int			map_stopped;
 }				t_game;
@@ -102,7 +103,6 @@ void	free_split(char **str);
 int		ft_isrow(char *row);
 int		ft_isempty(char *line);
 void	check_info(t_game *g);
-void	print_map(int **map, int nb_row, int nb_col);
 void	clear_image(t_game *g);
 void	position(t_player *player, int posX, int posY);
 int		key_pressed(int key, t_game *game);
@@ -113,5 +113,7 @@ void	get_texture(t_game *g);
 void	put_text(t_game *g, t_data *t);
 void	draw_texture(t_game *g, t_data *t);
 void	is_rect(t_game *g);
+void	is_end(t_game *g);
+void	is_move(t_game *g);
 
 #endif
