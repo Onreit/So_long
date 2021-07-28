@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 22:31:28 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 23:22:48 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 06:35:51 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	set_texture(t_game *g, t_data *text, char *line)
 
 void	get_texture(t_game *g)
 {
-	set_texture(g, g->col, "./texture/sprite_3.xpm");
-	set_texture(g, g->floor, "./texture/floor_1.xpm");
-	set_texture(g, g->text_player, "./texture/dauphin.xpm");
-	set_texture(g, g->exit, "./texture/pillar.xpm");
-	set_texture(g, g->wall, "./texture/wall_1.xpm");
+	set_texture(g, g->col, "./texture/coin.xpm");
+	set_texture(g, g->floor, "./texture/sand.xpm");
+	set_texture(g, g->text_player, "./texture/mario.xpm");
+	set_texture(g, g->exit, "./texture/pipe.xpm");
+	set_texture(g, g->wall, "./texture/wall.xpm");
 }

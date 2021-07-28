@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 12:24:06 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 02:44:41 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 07:59:26 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,20 @@ void	parse_map(char *line, t_game *game)
 
 static void	get_map(char *line, t_game *game)
 {
+	if (game->map_started == 0 && ft_isempty(line))
+	{
+		free(line);
+		exit_failure("The map has a wrong format\n", game);
+	}
 	if (game->map_started == 1)
 	{
 		if (game->map_stopped == 1 && !ft_isempty(line))
 		{
 			free(line);
-			exit_failure("The map has a wrong format;\n", game);
+			exit_failure("The map has a wrong format\n", game);
 		}
 		else
-		{
-			if (ft_isempty(line))
-				game->map_stopped = 1;
-			else if (ft_isrow(line))
-				parse_map(line, game);
-			else if (game->map_started == 1)
-				exit_failure("The map has a wrong format;\n", game);
-		}
+			help_map(game, line);
 	}
 	else
 	{

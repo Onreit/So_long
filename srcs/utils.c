@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 03:43:49 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 05:16:43 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 08:03:38 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,12 @@ int	ft_isempty(char *line)
 
 void	check_info(t_game *g)
 {
-	if (g->collect == 0 || g->check_exit == 0 || g->check_player == 0)
-		exit_failure("Too few info\n", g);
+	if (g->check_player == 0)
+		exit_failure("Need player in the map\n", g);
+	if (g->collect == 0)
+		exit_failure("Too few collectibles\n", g);
+	if (g->check_exit == 0)
+		exit_failure("Too few exit\n", g);
 }
 
 void	is_move(t_game *g)

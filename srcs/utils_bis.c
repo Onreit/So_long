@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 00:58:54 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 05:13:38 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 07:55:34 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,14 @@ void	is_end(t_game *g)
 	if (g->map->l_map[(int)g->player->posY][(int)g->player->posX] == 3
 		&& g->collect == 0)
 		exit_game(g);
+}
+
+void	help_map(t_game *game, char *line)
+{
+	if (ft_isempty(line))
+		game->map_stopped = 1;
+	else if (ft_isrow(line))
+		parse_map(line, game);
+	else if (game->map_started == 1)
+		exit_failure("The map has a wrong format;\n", game);
 }

@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 23:22:45 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 05:17:34 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 07:51:53 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,7 @@ void	draw_texture(t_game *g, t_data *t);
 void	is_rect(t_game *g);
 void	is_end(t_game *g);
 void	is_move(t_game *g);
+void	help_map(t_game *game, char *line);
+void	parse_map(char *line, t_game *game);
 
 #endif

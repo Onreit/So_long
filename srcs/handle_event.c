@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 10:11:51 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 05:19:19 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 05:54:36 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	move(int key, t_game *g)
 		g->player->posX += 1;
 	}
 	is_end(g);
+	g->current_move = INT_MIN;
 }
 
 int	main_loop(t_game *g)

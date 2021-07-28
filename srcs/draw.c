@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 05:04:32 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/28 05:31:42 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 06:40:19 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@ void	draw_elem(t_game *g, t_map *map)
 	else if (map->l_map[g->y][g->x] == 1)
 		draw_texture(g, g->wall);
 	else if (map->l_map[g->y][g->x] == 2)
+	{	
+		draw_texture(g, g->floor);
 		draw_texture(g, g->col);
+	}
 	else
+	{
+		draw_texture(g, g->floor);
 		draw_texture(g, g->exit);
+	}
 }
 
 void	mini_map(t_game *g)
