@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 12:54:33 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 05:23:52 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 02:44:16 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ t_data	*init_data(void)
 		return (NULL);
 	data->img = NULL;
 	data->addr = NULL;
-	data->path = NULL;
 	data->bits_per_pixel = 0;
 	data->line_length = 0;
 	data->endian = 0;
@@ -82,7 +81,9 @@ void	init_game(t_game *gamer)
 	gamer->col = init_data();
 	gamer->text_player = init_data();
 	gamer->wall = init_data();
-	if (!gamer->map || !gamer->player || !gamer->win || !gamer->data)
+	if (!gamer->map || !gamer->player || !gamer->win || !gamer->data
+		|| !gamer->floor || !gamer->text_player || !gamer->col
+		|| !gamer->exit)
 		exit_failure("Malloc error\n", gamer);
 	gamer->win->height = 0;
 	gamer->win->width = 0;
@@ -94,4 +95,5 @@ void	init_game(t_game *gamer)
 	gamer->x = 0;
 	gamer->y = 0;
 	gamer->size = 50;
+	gamer->check_player = 0;
 }

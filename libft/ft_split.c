@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 21:27:54 by tjalo             #+#    #+#             */
-/*   Updated: 2021/06/18 16:38:12 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 01:45:14 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static char	**sp(char **strs, const char *str, int *i, char c)
 			strs[i[0]] = malloc(sizeof(char) * (i[1] + 1));
 			if (!strs[i[0]])
 			{
-				while (--i[0] >= 0)
+				while (--i[0] > 0)
 					free(strs[i[0]]);
 				free(strs);
 				return (NULL);

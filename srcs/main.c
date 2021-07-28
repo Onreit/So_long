@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 17:40:52 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 04:43:53 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 23:05:56 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	main(int ac, char **av)
 	init_game(g);
 	if (ac != 2)
 		exit_failure("You must to have two arguments", g);
-	check_texture(g);
 	read_map(av[1], g);
 	print_map(g->map->l_map, g->map->nb_row, g->map->nb_col);
 	game_init(g);

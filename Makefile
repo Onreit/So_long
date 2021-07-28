@@ -6,7 +6,7 @@
 #    By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/04 15:00:02 by tjalo             #+#    #+#              #
-#    Updated: 2021/07/26 23:24:24 by tjalo            ###   ########.fr        #
+#    Updated: 2021/07/28 01:24:51 by tjalo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -I ./include
+CFLAGS = -Wall -Wextra -Werror -I ./include
 
 LDFLAGS = -L ./mlx
 
@@ -50,6 +50,7 @@ SRC =	srcs/parse_map.c \
 		srcs/draw.c \
 		srcs/texture.c \
 		srcs/parse_text.c \
+		srcs/utils_bis.c \
 		srcs/main.c \
 		${LIBFTSRC}
 

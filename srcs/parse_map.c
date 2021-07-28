@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 23:37:32 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 21:05:10 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 02:15:37 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	goal(char line, t_game *g, int *row, int current_line)
 {
 	if (line == 'P')
 	{	
-		position(g->player, g->x, current_line);
+		g->check_player += 1;
+		if (g->check_player == 1)
+			position(g->player, g->x, current_line);
 		row[g->x] = 0;
 	}
 	else if (line == 'C')
@@ -55,7 +57,7 @@ void	handle_line2(char *line, t_game *g, int current_line, int *row)
 			}
 			g->x++;
 		}
-		while (i < g->map->nb_col)
+		while (g->x++ < g->map->nb_col)
 			row[g->x++] = 0;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 12:24:06 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 21:00:30 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 02:44:41 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	parse_map(char *line, t_game *game)
 		{
 			if (game->player->dir == '0')
 				game->player->dir = line[i];
-			else
-				exit_failure("The map already has a position;\n", game);
 		}
 	}
 }
@@ -51,7 +49,10 @@ static void	get_map(char *line, t_game *game)
 	if (game->map_started == 1)
 	{
 		if (game->map_stopped == 1 && !ft_isempty(line))
+		{
+			free(line);
 			exit_failure("The map has a wrong format;\n", game);
+		}
 		else
 		{
 			if (ft_isempty(line))
@@ -93,6 +94,7 @@ void	read_map(char *map_path, t_game *game)
 		get_disp(game);
 		check_info(game);
 		check_map(game, game->map, game->player);
+		is_rect(game);
 		game->win->width = game->map->nb_col * game->size;
 		game->win->height = game->map->nb_row * game->size;
 	}

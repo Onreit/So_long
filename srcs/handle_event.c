@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 10:11:51 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 20:30:54 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 02:45:10 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 int	key_pressed(int key, t_game *game)
 {
-	printf("%d\n", key);
 	if (key == W || key == A || key == S || key == D || key == 65307)
+	{	
 		game->current_move = key;
+		if (key != 65307)
+			printf("current move = %d\n", key);
+	}
 	return (1);
 }
 
@@ -42,7 +45,10 @@ int	collision(int key, t_game *g)
 		tmp_x -= 1;
 	if (key == D)
 		tmp_x += 1;
-	return (g->map->l_map[(int)tmp_y][(int)tmp_x] == 1);
+	if (g->collect == 0)
+		return (g->map->l_map[(int)tmp_y][(int)tmp_x] == 1);
+	return (g->map->l_map[(int)tmp_y][(int)tmp_x] == 1
+			|| g->map->l_map[(int)tmp_y][(int)tmp_x] == 3);
 }
 
 void	move(int key, t_game *g)
@@ -66,7 +72,6 @@ void	move(int key, t_game *g)
 		printf("Game Over");
 		exit_game(g);
 	}
-	printf("current move = %d\n", g->current_move);
 }
 
 int	main_loop(t_game *g)
@@ -75,7 +80,7 @@ int	main_loop(t_game *g)
 		|| g->current_move == D)
 		move(g->current_move, g);
 	if (g->current_move == 65307)
-		clear_game(g);
+		exit_game(g);
 	mlx_clear_window(g->win->mlx_ptr, g->win->win_ptr);
 	mini_map(g);
 	mlx_put_image_to_window(g->win->mlx_ptr, g->win->win_ptr,

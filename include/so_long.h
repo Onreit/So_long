@@ -6,10 +6,9 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 23:22:45 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 03:54:32 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 02:52:29 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -39,7 +38,7 @@ typedef struct s_win
 	void	*win_ptr;
 }				t_win;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*img;
 	char	*addr;
@@ -61,8 +60,8 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int	posX;
-	int	posY;
+	int		posX;
+	int		posY;
 	char	dir;
 }				t_player;
 
@@ -82,6 +81,7 @@ typedef struct s_game
 	int			size;
 	int			collect;
 	int			check_exit;
+	int			check_player;
 	int			current_move;
 	int			map_started;
 	int			map_stopped;
@@ -90,28 +90,28 @@ typedef struct s_game
 void	mini_map(t_game *game);
 void	exit_failure(char *error, t_game *g);
 void	clear_game(t_game *g);
-int	exit_game(t_game *g);
-int	main_loop(t_game *g);
+int		exit_game(t_game *g);
+int		main_loop(t_game *g);
 void	init_game(t_game *gamer);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	read_map(char *map_path, t_game *game);
-int	*handle_line(char *line, t_game *game, int current_line);
+int		*handle_line(char *line, t_game *game, int current_line);
 void	ft_strjoin_fr(char **str, char *buf);
 void	check_map(t_game *g, t_map *map, t_player *player);
 void	free_split(char **str);
-int	ft_isrow(char *row);
-int	ft_isempty(char *line);
+int		ft_isrow(char *row);
+int		ft_isempty(char *line);
 void	check_info(t_game *g);
 void	print_map(int **map, int nb_row, int nb_col);
 void	clear_image(t_game *g);
 void	position(t_player *player, int posX, int posY);
-int	key_pressed(int key, t_game *game);
-int	key_release(int key, t_game *game);
+int		key_pressed(int key, t_game *game);
+int		key_release(int key, t_game *game);
 void	get_disp(t_game *game);
 void	draw_player(t_game *game);
-void	check_texture(t_game *g);
 void	get_texture(t_game *g);
 void	put_text(t_game *g, t_data *t);
-void    draw_texture(t_game *g, t_data *t);
+void	draw_texture(t_game *g, t_data *t);
+void	is_rect(t_game *g);
 
 #endif

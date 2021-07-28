@@ -6,24 +6,15 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 22:31:28 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/27 20:37:49 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/27 23:22:48 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	check_texture(t_game *g)
+void	set_texture(t_game *g, t_data *text, char *line)
 {
-	g->floor->path = ft_strdup("./texture/floor_1.xpm");
-	g->wall->path = ft_strdup("./texture/wall_1.xpm");
-	g->col->path = ft_strdup("./texture/sprite_3.xpm");
-	g->exit->path = ft_strdup("./texture/pillar.xpm");
-	g->text_player->path = ft_strdup("./texture/dauphin.xpm");
-}
-
-void	set_texture(t_game *g, t_data *text)
-{
-	text->img = mlx_xpm_file_to_image(g->win->mlx_ptr, text->path,
+	text->img = mlx_xpm_file_to_image(g->win->mlx_ptr, line,
 			&text->width, &text->height);
 	if (!text->img)
 		exit_failure("Impossible to load texture\n", g);
@@ -33,9 +24,9 @@ void	set_texture(t_game *g, t_data *text)
 
 void	get_texture(t_game *g)
 {
-	set_texture(g, g->col);
-	set_texture(g, g->floor);
-	set_texture(g, g->text_player);
-	set_texture(g, g->exit);
-	set_texture(g, g->wall);
+	set_texture(g, g->col, "./texture/sprite_3.xpm");
+	set_texture(g, g->floor, "./texture/floor_1.xpm");
+	set_texture(g, g->text_player, "./texture/dauphin.xpm");
+	set_texture(g, g->exit, "./texture/pillar.xpm");
+	set_texture(g, g->wall, "./texture/wall_1.xpm");
 }

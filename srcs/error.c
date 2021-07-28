@@ -6,7 +6,7 @@
 /*   By: tjalo <tjalo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 12:22:38 by tjalo             #+#    #+#             */
-/*   Updated: 2021/07/23 05:22:44 by tjalo            ###   ########.fr       */
+/*   Updated: 2021/07/28 02:49:07 by tjalo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,16 @@ void	clear_game(t_game *g)
 			free(g->map->l_map[i++]);
 		free(g->map->l_map);
 	}
-	free(g->map);
+	if (g->map)
+		free(g->map);
 	clear_image(g);
 	if (g->win->win_ptr)
+	{
 		mlx_destroy_window(g->win->mlx_ptr, g->win->win_ptr);
-	mlx_destroy_display(g->win->mlx_ptr);
-	free(g->win->mlx_ptr);
+		mlx_destroy_display(g->win->mlx_ptr);
+	}
+	if (g->win->mlx_ptr)
+		free(g->win->mlx_ptr);
 	free(g->win);
 	free(g);
 }
@@ -51,6 +55,6 @@ void	clear_game(t_game *g)
 int	exit_game(t_game *g)
 {
 	clear_game(g);
-	exit(EXIT_SUCCESS);
+	exit(0);
 	return (0);
 }
